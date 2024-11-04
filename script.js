@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Brand Slider
     const brandSlider = document.getElementById('brandSlider').firstElementChild;
-    let currentBrandPosition = 0;
+    let currentBrandPosition =  0;
 
     function rotateBrands() {
         currentBrandPosition = (currentBrandPosition + 20) % 100;
@@ -61,7 +61,11 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 1, 
             name: 'Tractor A',
             brand: 'Cestari', 
-            image: '/placeholder.svg?height=300&width=400', 
+            images: [
+                '/placeholder.svg?height=300&width=400&text=Tractor A 1',
+                '/placeholder.svg?height=300&width=400&text=Tractor A 2',
+                '/placeholder.svg?height=300&width=400&text=Tractor A 3'
+            ],
             description: 'Tractor potente para labores pesadas.',
             technicalDetails: {
                 power: '150 HP',
@@ -74,7 +78,11 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 2, 
             name: 'Cosechadora B', 
             brand: 'Praba', 
-            image: '/placeholder.svg?height=300&width=400', 
+            images: [
+                '/placeholder.svg?height=300&width=400&text=Cosechadora B 1',
+                '/placeholder.svg?height=300&width=400&text=Cosechadora B 2',
+                '/placeholder.svg?height=300&width=400&text=Cosechadora B 3'
+            ],
             description: 'Cosechadora eficiente para grandes extensiones.',
             technicalDetails: {
                 power: '300 HP',
@@ -87,7 +95,11 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 3, 
             name: 'Sembradora C', 
             brand: 'SR', 
-            image: '/placeholder.svg?height=300&width=400', 
+            images: [
+                '/placeholder.svg?height=300&width=400&text=Sembradora C 1',
+                '/placeholder.svg?height=300&width=400&text=Sembradora C 2',
+                '/placeholder.svg?height=300&width=400&text=Sembradora C 3'
+            ],
             description: 'Sembradora de precisión para diversos cultivos.',
             technicalDetails: {
                 rows: '16',
@@ -100,7 +112,11 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 4, 
             name: 'Pulverizadora D', 
             brand: 'Super Walter', 
-            image: '/placeholder.svg?height=300&width=400', 
+            images: [
+                '/placeholder.svg?height=300&width=400&text=Pulverizadora D 1',
+                '/placeholder.svg?height=300&width=400&text=Pulverizadora D 2',
+                '/placeholder.svg?height=300&width=400&text=Pulverizadora D 3'
+            ],
             description: 'Pulverizadora de alta tecnología y precisión.',
             technicalDetails: {
                 tankCapacity: '3000 L',
@@ -113,7 +129,11 @@ document.addEventListener('DOMContentLoaded', function() {
             id: 5, 
             name: 'Embolsadora E', 
             brand: 'Richiger', 
-            image: '/placeholder.svg?height=300&width=400', 
+            images: [
+                '/placeholder.svg?height=300&width=400&text=Embolsadora E 1',
+                '/placeholder.svg?height=300&width=400&text=Embolsadora E 2',
+                '/placeholder.svg?height=300&width=400&text=Embolsadora E 3'
+            ],
             description: 'Embolsadora rápida y eficiente para granos.',
             technicalDetails: {
                 capacity: '250 ton/h',
@@ -130,11 +150,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function createMachineCard(machine) {
         return `
             <div class="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:scale-105" data-brand="${machine.brand}">
-                <img src="${machine.image}" alt="${machine.name}" class="w-full h-48 object-cover">
+                <img src="${machine.images[0]}" alt="${machine.name}" class="w-full h-48 object-cover">
                 <div class="p-6">
                     <h3 class="text-xl font-semibold mb-2">${machine.name}</h3>
                     <p class="text-gray-600 mb-4">${machine.brand}</p>
-                    <button class="view-details gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition duration-300" data-id="${machine.id}">
+                    <button class="view-details bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300" data-id="${machine.id}">
                         Ver detalles
                     </button>
                 </div>
@@ -150,10 +170,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            filterButtons.forEach(btn => btn.classList.remove('gradient-bg', 'text-white'));
+            filterButtons.forEach(btn => btn.classList.remove('bg-red-600', 'text-white'));
             filterButtons.forEach(btn => btn.classList.add('bg-yellow-50', 'text-red-600'));
             this.classList.remove('bg-yellow-50', 'text-red-600');
-            this.classList.add('gradient-bg', 'text-white');
+            this.classList.add('bg-red-600', 'text-white');
             renderMachines(this.dataset.filter);
         });
     });
@@ -164,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('machineModal');
     const closeModal = document.getElementById('closeModal');
     const modalTitle = document.getElementById('modalTitle');
-    const modalImage = document.getElementById('modalImage');
+    const modalImageGallery = document.getElementById('modalImageGallery');
     const modalDescription = document.getElementById('modalDescription');
     const modalTechnicalDetails = document.getElementById('modalTechnicalDetails');
     const modalBrand = document.getElementById('modalBrand');
@@ -175,8 +195,9 @@ document.addEventListener('DOMContentLoaded', function() {
             button.addEventListener('click', function() {
                 const machine = machines.find(m => m.id === parseInt(this.dataset.id));
                 modalTitle.textContent = machine.name;
-                modalImage.src = machine.image;
-                modalImage.alt = machine.name;
+                modalImageGallery.innerHTML = machine.images.map(img => `
+                    <img src="${img}" alt="${machine.name}" class="w-full rounded-lg mb-4">
+                `).join('');
                 modalDescription.textContent = machine.description;
                 modalTechnicalDetails.innerHTML = Object.entries(machine.technicalDetails)
                     .map(([key, value]) => `<li><span class="font-medium">${key.charAt(0).toUpperCase() + key.slice(1)}:</span> ${value}</li>`)
