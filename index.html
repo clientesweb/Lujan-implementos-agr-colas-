@@ -104,14 +104,30 @@
             object-fit: cover;
         }
         .brand-logo {
-            height: 100px;
-            width: auto;
-            max-width: none;
-        }
-        #brandSlider {
-            height: auto;
-            overflow: visible;
-        }
+    height: 100px;
+    width: auto;
+    max-width: none;
+}
+
+#brandSlider {
+    height: auto;
+    overflow: hidden; /* Asegura que el contenido extra esté oculto */
+}
+
+.brand-track {
+    display: flex;
+    gap: 20px; /* Espacio entre cada logo */
+    animation: scroll 20s linear infinite; /* Animación continua */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Ajusta este valor si duplicas más o menos logos */
+    }
+}
         /* Nuevo estilo para el fondo SVG */
         .svg-background {
             position: fixed;
@@ -229,30 +245,47 @@
     </section>
 
     <!-- Brands Section -->
-    <section id="marcas" class="py-16 bg-yellow-50 scroll-reveal">
-        <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Concesionario Oficial</h2>
-            <div id="brandSlider" class="relative overflow-hidden">
-                <div class="flex transition-transform duration-1000 ease-in-out">
-                    <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="Cestarii.png" alt="Cestari" class="mx-auto brand-logo">
-                    </div>
-                    <div class="flex-shrink-0  w-1/5 px-4">
-                        <img src="Praba.png" alt="Praba" class="mx-auto brand-logo">
-                    </div>
-                    <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="Rs.png" alt="SR" class="mx-auto brand-logo">
-                    </div>
-                    <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="Super.png" alt="Super Walter" class="mx-auto brand-logo">
-                    </div>
-                    <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="Richi.png" alt="Richiger" class="mx-auto brand-logo">
-                    </div>
+<section id="marcas" class="py-16 bg-yellow-50 scroll-reveal">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold text-center mb-12">Concesionario Oficial</h2>
+        <div id="brandSlider" class="relative overflow-hidden">
+            <div class="brand-track flex">
+                <!-- Primera ronda de logos -->
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Cestarii.png" alt="Cestari" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Praba.png" alt="Praba" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Rs.png" alt="SR" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Super.png" alt="Super Walter" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Richi.png" alt="Richiger" class="mx-auto brand-logo">
+                </div>
+                <!-- Segunda ronda de logos para el bucle infinito -->
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Cestarii.png" alt="Cestari" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Praba.png" alt="Praba" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Rs.png" alt="SR" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Super.png" alt="Super Walter" class="mx-auto brand-logo">
+                </div>
+                <div class="flex-shrink-0 w-1/5 px-4">
+                    <img src="Richi.png" alt="Richiger" class="mx-auto brand-logo">
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Machinery Section -->
     <section id="maquinarias" class="py-16 bg-white scroll-reveal">
