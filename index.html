@@ -45,9 +45,6 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0px); }
         }
-        .gradient-bg {
-            background: linear-gradient(45deg, var(--lujan-red), var(--lujan-yellow));
-        }
         .instagram-reels {
             display: flex;
             overflow-x: auto;
@@ -90,6 +87,18 @@
                 box-shadow: 0 0 0 0 rgba(255, 0, 0, 0);
             }
         }
+        .hero-section {
+            height: 70vh;
+        }
+        .brand-logo {
+            height: 100px;
+            width: auto;
+            max-width: none;
+        }
+        #brandSlider {
+            height: auto;
+            overflow: visible;
+        }
     </style>
 </head>
 <body class="min-h-screen bg-yellow-50">
@@ -99,7 +108,7 @@
     </div>
 
     <!-- Top Banner -->
-    <div id="topBanner" class="gradient-bg text-white py-2 px-4 text-center relative overflow-hidden h-10">
+    <div id="topBanner" class="bg-red-600 text-white py-2 px-4 text-center relative overflow-hidden h-10">
         <div class="banner-message absolute inset-0 flex items-center justify-center transition-opacity duration-500 opacity-100">
             <p>¡Oferta especial! 10% de descuento en todos los implementos hasta fin de mes.</p>
         </div>
@@ -137,24 +146,24 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative h-screen scroll-reveal">
+    <section id="inicio" class="relative hero-section scroll-reveal">
         <div class="absolute inset-0 bg-black opacity-50"></div>
         <div id="heroSlider" class="relative h-full">
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-100">
-                <img src="hero.png" alt="Slide 1" class="w-full h-full object-cover">
+                <video src="/placeholder.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
             </div>
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="hero1.png" alt="Slide 2" class="w-full h-full object-cover">
+                <video src="/placeholder2.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
             </div>
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <img src="hero3.png" alt="Slide 3" class="w-full h-full object-cover">
+                <video src="/placeholder3.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
             </div>
         </div>
         <div class="absolute inset-0 flex items-center justify-center">
             <div class="text-center">
                 <h1 class="text-5xl font-bold text-white mb-4">Líderes en implementos agrícolas</h1>
                 <p class="text-2xl text-white mb-8">20 años brindando el mejor servicio postventa</p>
-                <a href="#contacto" class="gradient-bg text-white px-8 py-3 rounded-full text-lg font-semibold hover:opacity-90 transition duration-300">Contáctanos</a>
+                <a href="#contacto" class="bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-red-700 transition duration-300">Contáctanos</a>
             </div>
         </div>
     </section>
@@ -192,22 +201,22 @@
     <section id="marcas" class="py-16 bg-yellow-50 scroll-reveal">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Concesionario Oficial</h2>
-            <div id="brandSlider" class="relative overflow-hidden h-24">
+            <div id="brandSlider" class="relative overflow-hidden">
                 <div class="flex transition-transform duration-1000 ease-in-out">
                     <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="/placeholder.svg?height=100&width=200&text=Cestari" alt="Cestari" class="mx-auto h-24">
+                        <img src="/placeholder.svg?height=100&width=200&text=Cestari" alt="Cestari" class="mx-auto brand-logo">
                     </div>
                     <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="/placeholder.svg?height=100&width=200&text=Praba" alt="Praba" class="mx-auto h-24">
+                        <img src="/placeholder.svg?height=100&width=200&text=Praba" alt="Praba" class="mx-auto brand-logo">
                     </div>
                     <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="/placeholder.svg?height=100&width=200&text=SR" alt="SR" class="mx-auto h-24">
+                        <img src="/placeholder.svg?height=100&width=200&text=SR" alt="SR" class="mx-auto brand-logo">
                     </div>
                     <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="/placeholder.svg?height=100&width=200&text=Super Walter" alt="Super Walter" class="mx-auto h-24">
+                        <img src="/placeholder.svg?height=100&width=200&text=Super Walter" alt="Super Walter" class="mx-auto brand-logo">
                     </div>
                     <div class="flex-shrink-0 w-1/5 px-4">
-                        <img src="/placeholder.svg?height=100&width=200&text=Richiger" alt="Richiger" class="mx-auto h-24">
+                        <img src="/placeholder.svg?height=100&width=200&text=Richiger" alt="Richiger" class="mx-auto brand-logo">
                     </div>
                 </div>
             </div>
@@ -219,11 +228,11 @@
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12">Nuestras Maquinarias</h2>
             <div class="mb-8 flex flex-wrap justify-center gap-4">
-                <button class="filter-btn px-4 py-2 rounded-full gradient-bg  text-white" data-filter="all">Todas</button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-red-600 text-white" data-filter="all">Todas</button>
                 <button class="filter-btn px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="Cestari">Cestari</button>
                 <button class="filter-btn px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="Praba">Praba</button>
                 <button class="filter-btn px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="SR">SR</button>
-                <button class="filter-btn px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="Super Walter">Super Walter</button>
+                <button class="filter-btn  px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="Super Walter">Super Walter</button>
                 <button class="filter-btn px-4 py-2 rounded-full bg-yellow-50 text-red-600" data-filter="Richiger">Richiger</button>
             </div>
             <div id="machineGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -242,6 +251,15 @@
                 <iframe class="instagram-reel" src="https://www.instagram.com/reel/placeholder2/embed" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
                 <iframe class="instagram-reel" src="https://www.instagram.com/reel/placeholder3/embed" frameborder="0" scrolling="no" allowtransparency="true"></iframe>
             </div>
+        </div>
+    </section>
+
+    <!-- New Advertising Banner -->
+    <section id="advertising-banner" class="py-16 bg-red-600 text-white scroll-reveal">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-4">¡Oferta Especial!</h2>
+            <p class="text-xl mb-8">Obtén un 15% de descuento en tu próxima compra de maquinaria agrícola.</p>
+            <a href="#contacto" class="bg-white text-red-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-yellow-100 transition duration-300">Aprovecha Ahora</a>
         </div>
     </section>
 
@@ -275,7 +293,7 @@
                             <label for="mensaje" class="block mb-1 font-medium">Mensaje</label>
                             <textarea id="mensaje" name="mensaje" required class="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-500" rows="4"></textarea>
                         </div>
-                        <button type="submit" class="gradient-bg text-white px-6 py-2 rounded-lg hover:opacity-90 transition duration-300">
+                        <button type="submit" class="bg-red-600 text-white px-6 py-2 rounded-lg hover:bg-red-700 transition duration-300">
                             Enviar por WhatsApp
                         </button>
                     </form>
@@ -288,7 +306,7 @@
     </section>
 
     <!-- Newsletter Section -->
-    <section id="newsletter" class="py-16 gradient-bg scroll-reveal">
+    <section id="newsletter" class="py-16 bg-red-600 scroll-reveal">
         <div class="container mx-auto px-4">
             <div class="text-center max-w-2xl mx-auto">
                 <h2 class="text-3xl font-bold mb-4 text-white">Boletín Informativo</h2>
@@ -326,7 +344,7 @@
                 <div>
                     <h3 class="text-xl font-semibold mb-4">Contacto</h3>
                     <p>WhatsApp: +54 9 3468 53-1852</p>
-                    <p>Email: lujanimplementos@gmail.com</p>
+                    <p>Email: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c5a9b0afa4abaca8b5a9a0a8a0abb1aab685a2a8a4aca9eba6aaa8">[email&#160;protected]</a></p>
                     <p>Dirección: Moreno 329, Chañar Ladeado, Santa Fe, Argentina</p>
                 </div>
                 <div>
@@ -370,13 +388,15 @@
                         <i class="fas fa-times"></i>
                     </button>
                 </div>
-                <img id="modalImage" src="" alt="" class="w-full rounded-lg mb-4">
+                <div id="modalImageGallery" class="mb-4">
+                    <!-- Images will be dynamically inserted here -->
+                </div>
                 <p id="modalDescription" class="text-gray-600 mb-4"></p>
                 <h4 class="text-xl font-semibold mb-2">Ficha Técnica</h4>
                 <ul id="modalTechnicalDetails" class="list-disc pl-5 mb-4"></ul>
                 <div class="flex justify-between items-center">
                     <p id="modalBrand" class="text-lg font-semibold"></p>
-                    <a id="modalWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition duration-300">
+                    <a id="modalWhatsApp" href="#" target="_blank" rel="noopener noreferrer" class="bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300">
                         Consultar por WhatsApp
                     </a>
                 </div>
@@ -384,6 +404,6 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="script.js"></script>
 </body>
 </html>
