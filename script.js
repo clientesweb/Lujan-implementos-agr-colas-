@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Preloader
+    window.addEventListener('load', function() {
+        const preloader = document.getElementById('preloader');
+        preloader.style.opacity = '0';
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 500);
+    });
+
     // Top Banner
     const bannerMessages = document.querySelectorAll('.banner-message');
     let currentBanner = 0;
@@ -50,7 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const machines = [
         { 
             id: 1, 
-            name: 'Tractor A', 
+            name: 'Tractor A',
             brand: 'Cestari', 
             image: '/placeholder.svg?height=300&width=400', 
             description: 'Tractor potente para labores pesadas.',
@@ -125,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="p-6">
                     <h3 class="text-xl font-semibold mb-2">${machine.name}</h3>
                     <p class="text-gray-600 mb-4">${machine.brand}</p>
-                    <button class="view-details bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300" data-id="${machine.id}">
+                    <button class="view-details gradient-bg text-white px-4 py-2 rounded-full hover:opacity-90 transition duration-300" data-id="${machine.id}">
                         Ver detalles
                     </button>
                 </div>
@@ -141,10 +150,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            filterButtons.forEach(btn => btn.classList.remove('bg-red-600', 'text-white'));
+            filterButtons.forEach(btn => btn.classList.remove('gradient-bg', 'text-white'));
             filterButtons.forEach(btn => btn.classList.add('bg-yellow-50', 'text-red-600'));
             this.classList.remove('bg-yellow-50', 'text-red-600');
-            this.classList.add('bg-red-600', 'text-white');
+            this.classList.add('gradient-bg', 'text-white');
             renderMachines(this.dataset.filter);
         });
     });
