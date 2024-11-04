@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="p-6">
                     <h3 class="text-xl font-semibold mb-2">${machine.name}</h3>
                     <p class="text-gray-600 mb-4">${machine.brand}</p>
-                    <button class="view-details bg-green-600 text-white px-4 py-2 rounded-full hover:bg-green-700 transition duration-300" data-id="${machine.id}">
+                    <button class="view-details bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300" data-id="${machine.id}">
                         Ver detalles
                     </button>
                 </div>
@@ -141,10 +141,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', function() {
-            filterButtons.forEach(btn => btn.classList.remove('bg-green-600', 'text-white'));
-            filterButtons.forEach(btn => btn.classList.add('bg-gray-200', 'text-gray-700'));
-            this.classList.remove('bg-gray-200', 'text-gray-700');
-            this.classList.add('bg-green-600', 'text-white');
+            filterButtons.forEach(btn => btn.classList.remove('bg-red-600', 'text-white'));
+            filterButtons.forEach(btn => btn.classList.add('bg-yellow-50', 'text-red-600'));
+            this.classList.remove('bg-yellow-50', 'text-red-600');
+            this.classList.add('bg-red-600', 'text-white');
             renderMachines(this.dataset.filter);
         });
     });
@@ -185,11 +185,64 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Contact Form
     const contactForm = document.getElementById('contactForm');
+    const machinerySelect = document.getElementById('maquinaria');
+
+    machines.forEach(machine => {
+        const option = document.createElement('option');
+        option.value = machine.name;
+        option.textContent = `${machine.name} - ${machine.brand}`;
+        machinerySelect.appendChild(option);
+    });
+
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        // Here you would typically send the form data to a server
-        alert('Gracias por tu mensaje. Nos pondremos en contacto contigo pronto.');
-        contactForm.reset();
+        
+        const nombre = document.getElementById('nombre').value;
+        const email = document.getElementById('email').value;
+        const telefono = document.getElementById('telefono').value;
+        const maquinaria = document.getElementById('maquinaria').value;
+        const mensaje = document.getElementById('mensaje').value;
+
+        const whatsappMessage = `
+¡Nuevo contacto desde la web!
+---------------------------
+Nombre: ${nombre}
+Email: ${email}
+Teléfono: ${telefono}
+Maquinaria de interés: ${maquinaria}
+Mensaje: ${mensaje}
+        `.trim();
+
+        const whatsappUrl = `https://wa.me/5493468531852?text=${encodeURIComponent(whatsappMessage)}`;
+        window.open(whatsappUrl, '_blank');
+    });
+
+    // Newsletter Form
+    const newsletterForm = document.getElementById('newsletterForm');
+    newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const whatsappNumber = document.getElementById('whatsappNumber').value;
+        const message = `
+¡Nueva suscripción al boletín!
+---------------------------
+Número de WhatsApp: ${whatsappNumber}
+        `.trim();
+
+        const whatsappUrl = `https://wa.me/5493468531852?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+        
+        this.reset();
+        alert('¡Gracias por suscribirte a nuestro boletín!');
+    });
+
+    // ScrollReveal
+    ScrollReveal().reveal('.scroll-reveal', {
+        delay: 200,
+        distance: '20px',
+        duration: 1000,
+        easing: 'ease-in-out',
+        origin: 'bottom'
     });
 
     // Set current year in footer
