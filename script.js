@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Brand Slider
     const brandSlider = document.getElementById('brandSlider').firstElementChild;
-    let currentBrandPosition =  0;
+    let currentBrandPosition = 0;
 
     function rotateBrands() {
         currentBrandPosition = (currentBrandPosition + 20) % 100;
