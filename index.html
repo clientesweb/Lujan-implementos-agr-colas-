@@ -89,6 +89,19 @@
         }
         .hero-section {
             height: 70vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            object-fit: cover;
         }
         .brand-logo {
             height: 100px;
@@ -164,20 +177,20 @@
     </header>
 
     <!-- Hero Section -->
-    <section id="inicio" class="relative hero-section scroll-reveal">
-        <div class="absolute inset-0 bg-black opacity-50"></div>
+     <section id="inicio" class="relative hero-section scroll-reveal">
+        <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
         <div id="heroSlider" class="relative h-full">
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-100">
-                <video src="hero.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
+                <video src="hero.mp4" autoplay loop muted playsinline class="hero-video"></video>
             </div>
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <video src="hero1.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
+                <video src="hero1.mp4" autoplay loop muted playsinline class="hero-video"></video>
             </div>
             <div class="absolute inset-0 transition-opacity duration-1000 opacity-0">
-                <video src="hero2.mp4" autoplay loop muted class="w-full h-full object-cover"></video>
+                <video src="hero2.mp4" autoplay loop muted playsinline class="hero-video"></video>
             </div>
         </div>
-        <div class="absolute inset-0 flex items-center justify-center">
+        <div class="absolute inset-0 flex items-center justify-center z-20">
             <div class="text-center">
                 <h1 class="text-5xl font-bold text-white mb-4">Líderes en implementos agrícolas</h1>
                 <p class="text-2xl text-white mb-8">20 años brindando el mejor servicio postventa</p>
